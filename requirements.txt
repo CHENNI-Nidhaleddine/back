@@ -8,10 +8,7 @@ Pillow
 pydantic
 python-multipart
 scikit-image
-scikit-learn
 scipy
 sklearn
 tensorflow
-tensorflow-estimator
-tensorflow-io-gcs-filesystem
 tensorly
