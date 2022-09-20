@@ -14,7 +14,7 @@ import PIL.Image as Image
 import os
 import pickle
 from pydantic import BaseModel
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 filename = 'finalized_model.pkl'
 filename2 = 'matrix.pkl'
 model = pickle.load(open(filename, 'rb'))
@@ -64,9 +64,12 @@ async def  setpic( pic:bytes = File(...)):
     _input=projected_data.reshape(1,546)
     # pred_idx = model.predict_proba(_input)[0]
     proba = model.predict_proba(_input)
-    return proba[0][0]
+    result='neutral'
+    if(proba[0][0]>proba[0][1]):
+        result='pain'
+    return {'pain':proba[0][0],'neutral':proba[0][1],'result':result}
     # return {'prediction': Categories[pred_idx]}
 
-if __name__ == "__main__":
-	port = int(os.environ.get('PORT', 5000))
-	run(app, host="192.168.85.58", port=port)
+# if __name__ == "__main__":
+# 	port = int(os.environ.get('PORT', 5000))
+# 	run(app, host="localhost", port=port)
