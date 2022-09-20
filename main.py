@@ -70,6 +70,6 @@ async def  setpic( pic:bytes = File(...)):
     return {'pain':proba[0][0],'neutral':proba[0][1],'result':result}
     # return {'prediction': Categories[pred_idx]}
 
-# if __name__ == "__main__":
-# 	port = int(os.environ.get('PORT', 5000))
-# 	run(app, host="localhost", port=port)
+if __name__ == "__main__":
+  port = int(os.environ.get('PORT', 5000))
+  run(app, host="0.0.0.0", port=port)
